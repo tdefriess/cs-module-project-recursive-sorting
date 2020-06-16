@@ -8,16 +8,16 @@ def binary_search(arr, target, start, end):
         return start
 
     # set up new search arr
-    search_arr = arr[start:end]
+    # search_arr = arr[start:end]
     # Select midpoint and compare midpoint to target
-    midpoint = len(arr) // 2
+    midpoint = (end + start) // 2
     if arr[midpoint] == target:
         return midpoint
-    # If midpoint is not target, perform recursion call using new search_arr
+    # If midpoint is not target, perform recursion call using midpoint as new endpoint
     elif arr[midpoint] > target:
-        return binary_search(search_arr, target, start, midpoint)
+        return binary_search(arr, target, start, midpoint)
     else:
-        return binary_search(search_arr, target, midpoint, end)
+        return binary_search(arr, target, midpoint, end)
 
     pass
 
