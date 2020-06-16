@@ -1,11 +1,12 @@
 # TO-DO: Implement a recursive implementation of binary search
 def binary_search(arr, target, start, end):
-    # Your code here
-    # Base case
+    # Your code here    
     if len(arr) == 0:
         return -1
     if len(arr) == 1 and arr[0] == target:
         return start
+    if start == end and start != target:
+        return -1
 
     # set up new search arr
     # search_arr = arr[start:end]
@@ -15,9 +16,9 @@ def binary_search(arr, target, start, end):
         return midpoint
     # If midpoint is not target, perform recursion call using midpoint as new endpoint
     elif arr[midpoint] > target:
-        return binary_search(arr, target, start, midpoint)
+        return binary_search(arr, target, start, midpoint - 1)
     else:
-        return binary_search(arr, target, midpoint, end)
+        return binary_search(arr, target, midpoint + 1, end)
 
     pass
 
