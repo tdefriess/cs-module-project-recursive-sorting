@@ -16,7 +16,7 @@ def binary_search(arr, target, start, end):
         return midpoint
     # If midpoint is not target, perform recursion call using midpoint as new endpoint
     elif arr[midpoint] > target:
-        return binary_search(arr, target, start, midpoint - 1)
+        return binary_search(arr, target, start, midpoint )
     else:
         return binary_search(arr, target, midpoint + 1, end)
 
@@ -30,5 +30,10 @@ def binary_search(arr, target, start, end):
 # sorted in ascending order or in descending order
 # You can implement this function either recursively 
 # or iteratively
-# def agnostic_binary_search(arr, target):
+def agnostic_binary_search(arr, target):
     # Your code here
+    if arr[0] < arr[len(arr)-1]:
+        return binary_search(arr, target, 0, len(arr) - 1)
+    else:
+        transform = [i * -1 for i in arr]        
+        return binary_search(transform, target * -1, 0, len(transform) - 1)
